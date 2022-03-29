@@ -1,0 +1,4 @@
+
+select c.id,c.username, c.password, c.creation_date from "Customer" AS c, "Profile" AS p 
+where c.creation_date < now() - '1 year' :: interval and c.id = p.customer_id
+group by(c.id, p.customer_id) having count(p.customer_id) > 3;
